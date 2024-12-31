@@ -1,0 +1,144 @@
+{% load static %}
+
+<!-- Top Section: Sticky -->
+<div class="sticky-top bg-dark">
+  <div class="container-fluid text-bg-dark">
+    <div class="d-flex justify-content-evenly align-items-center py-3">
+      <div class="col-lg-2">
+        <a class="navbar-brand" href="{% url 'homepage' %}">
+          <img
+            src="{% static 'images/logo.png' %}"
+            alt="Dokaan Logo"
+            class="img-fluid"
+            style="max-height: 50px"
+          />
+        </a>
+      </div>
+
+      <div class="col-lg-6">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-warning d-flex align-items-center gap-2"
+            type="submit"
+          >
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            Search
+          </button>
+        </form>
+      </div>
+      <div class="col-lg-3">
+        <div class="d-flex align-items-center justify-content-end gap-2">
+          {% if user.is_authenticated %}
+          <!-- Logout Button -->
+          <div class="col-4 col-md-3">
+            <a href="{% url 'user_logout' %}" class="text-decoration-none">
+              <button
+                class="btn btn-danger w-100 d-flex justify-content-center align-items-center gap-1"
+              >
+                Logout
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </button>
+            </a>
+          </div>
+
+          <!-- Cart Button -->
+          <div class="col-4 col-md-3">
+            <a href="{% url 'show_cart_items' %}" class="text-decoration-none">
+              <button
+                class="btn btn-warning w-100 d-flex justify-content-center align-items-center gap-2"
+              >
+                <i class="fa-solid fa-cart-shopping fs-5"></i>
+                Cart
+              </button>
+            </a>
+          </div>
+
+          <!-- Order Button -->
+          <div class="col-4 col-md-3">
+            <a href="{% url 'my-order' %}" class="text-decoration-none">
+              <button
+                class="btn btn-success w-100 d-flex justify-content-center align-items-center gap-2"
+              >
+                Order
+                <i class="fa-sharp fa-solid fa-bag-shopping"></i>
+              </button>
+            </a>
+          </div>
+          {% else %}
+          
+          <div class="d-flex justify-content-start gap-3">
+
+            <!-- Sign In Button -->
+            <div class="w-auto">
+              <a href="{% url 'user_login' %}" class="text-decoration-none">
+                <button
+                  class="btn btn-primary d-flex justify-content-center align-items-center gap-2 px-3"
+                >
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  Sign In
+                </button>
+              </a>
+            </div>
+
+            <!-- Sign Up Button -->
+            <div class="w-auto">
+              <a href="{% url 'user_register' %}" class="text-decoration-none">
+                <button
+                  class="btn btn-secondary d-flex justify-content-center align-items-center gap-2 px-3"
+                >
+                  <i class="fa-solid fa-user-plus"></i>
+                  Sign Up
+                </button>
+              </a>
+            </div>
+          </div>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Bar: Not Sticky -->
+<nav
+  class="navbar navbar-expand-lg bg-body-tertiary"
+  style="background-color: #7f8c8d !important"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active text-white"
+            aria-current="page"
+            href="{% url 'homepage' %}"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'productpage' %}"
+            >Products</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

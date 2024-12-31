@@ -1,0 +1,35 @@
+{% extends "client/layouts.html" %}
+{% load static %}
+
+{% block page_title %}
+Dokaan Homepage
+{% endblock %}
+
+{% block main_content %}
+<!-- carousel content start -->
+{% include 'client/includes/carousel.html' %}
+<!-- carousel-content end  -->
+
+<!-- product container start -->
+<div class="container mt-5">
+  <h1 class="text-center text-uppercase fw-bold mb-4 text-gray-600">New Arrivals</h1>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+      {% for product in products %}
+      <div class="col">
+          <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="/{{ product.product_image }}" class="card-img-top img-fluid" alt="Product Image" style="height: 250px; object-fit: cover;">
+              <div class="card-body text-center">
+                  <h5 class="card-title fw-semibold mb-2">{{ product.product_name }}</h5>
+                  <p class="text-success fw-bold fs-5">Rs. {{ product.product_price }}</p>
+                  <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-primary w-75 rounded-pill fw-bold">
+                      View Details
+                  </a>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!-- product container end -->
+
+{% endblock %}
